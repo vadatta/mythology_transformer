@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mythology Text Generator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background: #020617;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #94a3b8;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      background: #020617;
+      color: #e5e7eb;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #38bdf8;
+      color: #020617;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    .output {
+      margin-top: 24px;
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 120px;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .loading {
+      margin-top: 12px;
+      color: #38bdf8;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Greek Mythology Generator</h1>
+    <p>Prompt your transformer trained on Greek myths.</p>
+
+    <textarea id="prompt" placeholder="Helen of Troy..."></textarea>
+    <button onclick="generate()">Generate</button>
+
+    <div class="loading" id="loading">Generating...</div>
+
+    <div class="output" id="output"></div>
+  </div>
+
+  <script>
+    async function generate() {
+      const prompt = document.getElementById("prompt").value;
+      const output = document.getElementById("output");
+      const loading = document.getElementById("loading");
+
+      output.textContent = "";
+      loading.style.display = "block";
+
+      const res = await fetch("http://localhost:8000/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt: prompt,
+          max_new_tokens: 200,
+          temperature: 0.8
+        })
+      });
+
+      const data = await res.json();
+
+      loading.style.display = "none";
+      output.textContent = data.completion;
+    }
+  </script>
+</body>
+</html>
