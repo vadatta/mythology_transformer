@@ -1,17 +1,16 @@
-from .model import Transformer
-from .data import qa_text
-from .data import build_training_text
-from .tokenizer import encode
+from model import Transformer
+from data import qa_text
+from data import build_training_text
+from tokenizer import encode
 import torch
 
-#split = int(0.9 * len(text))
-#train_data = text[:split]
-#validation_data = text[split:]
 
-#unshuffled data
-#train_tokens = torch.tensor(encode(train_data), dtype=torch.long)
-#val_tokens = torch.tensor(encode(validation_data), dtype=torch.long)
 qa_tokens = torch.tensor(encode(qa_text), dtype=torch.long)
+
+split = int(0.9 * len(qa_tokens))
+
+train_tokens = qa_tokens[:split]
+val_tokens = qa_tokens[split:]
 
 
 def get_batch(data):
@@ -24,18 +23,24 @@ def get_batch(data):
     return x, y
 
 
-model = Transformer(token_size=2000, embed_size=256, batch_size=24, context_length=256, num_repetitions=4)
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+print("Using device:", device)
+model = Transformer(token_size=2000, embed_size=256, batch_size=24, context_length=256, num_repetitions=4).to(device)
 model.train()
 optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
 
 for epoch in range(2):
-    #shuffled training data
-    train_data = build_training_text()
-    for i in range(4000):
-        x, y = get_batch(train_data)
 
-        # Fix: Squeeze the input tensor to remove the extra dimension
-        x = x.squeeze(-1)
+    train_data = build_training_text()
+
+    for i in range(4000):
+
+        model.train()
+
+        x, y = get_batch(train_tokens)
+
+        x = x.squeeze(-1).to(device)
+        y = y.to(device)
 
         output, loss = model(x, y)
 
@@ -44,18 +49,17 @@ for epoch in range(2):
         optimizer.step()
 
         if i % 500 == 0:
-            print(f"step {i}: loss {loss.item():.4f}")
 
-#lower learning rate for fine tuning to question answer pairs
-optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
-for i in range(1000):
-    x, y = get_batch(qa_tokens)
-    x = x.squeeze(-1)
-    output, loss = model(x, y)
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-    if i % 100 == 0:
-        print(f"step {i}: loss {loss.item():.4f}")
+            model.eval()
 
-torch.save(model.state_dict(), "weights.pt")
+            with torch.no_grad():
+                x_val, y_val = get_batch(val_tokens)
+                x_val = x_val.squeeze(-1).to(device)
+                y_val = y_val.to(device)
+
+                _, val_loss = model(x_val, y_val)
+
+            print(
+                f"epoch {epoch} step {i} | train loss {loss.item():.4f} | val loss {val_loss.item():.4f}"
+            )
+

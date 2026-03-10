@@ -2,14 +2,14 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import torch
 
-from .model import Transformer
-from .generate import generate
-from .tokenizer import encode, decode
+from model import Transformer
+from generate import generate
+from tokenizer import encode, decode
 
-app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,7 +21,7 @@ app.add_middleware(
 
 
 # ---- load model once ----
-device = "cpu"
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
 model = Transformer(
     token_size=2000, embed_size=256, batch_size=24, context_length=256, num_repetitions=4

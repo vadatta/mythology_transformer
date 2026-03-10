@@ -1,7 +1,7 @@
 import random
 from pathlib import Path
 import torch
-from .tokenizer import encode
+from tokenizer import encode
 
 BASE_DIR = Path(__file__).parent  # Backend/
 DATA_DIR = BASE_DIR / "data"
@@ -15,7 +15,7 @@ with open(DATA_DIR / "Greek_mythology.txt") as f:
 with open(DATA_DIR / "Odyssey.txt") as f:
     text3 = f.read()
 
-with open(DATA_DIR / "mythology_qa.txt") as f:
+with open(DATA_DIR / "mythology_prompts.txt") as f:
     qa_text= f.read()
 
 text = text1 + "\n\n" + text2 + "\n\n" + text3

@@ -3,7 +3,7 @@ import torch
 import torch.nn.functional as F
 
 class Embedding(nn.Module):
-  def __init__(self, token_size, embed_size, batch_size, context_length):
+  def __init__(self, token_size, embed_size, context_length):
     super().__init__()
     self.token_embeddings = nn.Embedding(token_size, embed_size)
     self.positional_embeddings = nn.Embedding(context_length, embed_size)
@@ -12,7 +12,9 @@ class Embedding(nn.Module):
   def forward(self, x):
     b, t = x.shape
     token_embed = self.token_embeddings(x)
-    positional_embed = self.positional_embeddings(torch.arange(t))
+    positional_embed = self.positional_embeddings(
+      torch.arange(t, device=x.device)
+    )
 
     # (batch_size * context_length * embed_size)
     return token_embed + positional_embed
@@ -37,7 +39,7 @@ class MultiHeadAttention(nn.Module):
     #prior to softmax, we must max values to prevent learning from future tokens
 
     #creates a lower triangular matrix of all ones
-    mask = torch.tril(torch.ones(t, t))
+    mask = torch.tril(torch.ones(t, t, device=x.device))
 
     #upper triangular part of weights is masked to -infinity to prevent tokens
     #at pos t to learn from tokens as pot > t
@@ -82,7 +84,7 @@ class Transformer(nn.Module):
     super().__init__()
     self.batch_size = batch_size
     self.context_length = context_length
-    self.embeddings = Embedding(token_size, embed_size, batch_size, context_length)
+    self.embeddings = Embedding(token_size, embed_size, context_length)
     self.transformer_blocks = nn.ModuleList([TransformerBlock(embed_size) for i in range(num_repetitions)])
 
     self.fl = nn.LayerNorm(embed_size)
