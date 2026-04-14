@@ -1,43 +1,63 @@
-import random
+import re
 from pathlib import Path
-import torch
-from tokenizer import encode
+from torch.utils.data import Dataset, DataLoader
+from tokenizer import hf_tokenizer
+import random
 
 BASE_DIR = Path(__file__).parent  # Backend/
 DATA_DIR = BASE_DIR / "data"
 
-with open(DATA_DIR / "Trojan_War.txt") as f:
-    text1 = f.read()
+def load_data(file_path):
+    raw_text = Path(file_path).read_text(encoding="utf-8")
+    entries = [x.strip() for x in re.split(r"\n\s*\n", raw_text) if x.strip()]
+    return entries
 
-with open(DATA_DIR / "Greek_mythology.txt") as f:
-    text2 = f.read()
+def split_data(entries, split_ratio):
+    entries = entries.copy()
+    rng = random.Random()
+    rng.shuffle(entries)
 
-with open(DATA_DIR / "Odyssey.txt") as f:
-    text3 = f.read()
+    split_idx = int(len(entries) * (1 - split_ratio))
+    train_entries = entries[:split_idx]
+    val_entries = entries[split_idx:]
 
-with open(DATA_DIR / "mythology_prompts.txt") as f:
-    qa_text= f.read()
+    return train_entries, val_entries
 
-text = text1 + "\n\n" + text2 + "\n\n" + text3
+class MythDataset(Dataset):
+    def __init__(self, entries):
+        self.entries = entries
 
-#split text into blocks of length 200 for randomization
-def split_blocks(text, min_len=200):
-    blocks = [
-        b.strip()
-        for b in text.split("\n\n")
-        if len(b.strip()) >= min_len
-    ]
-    return blocks
+    def __len__(self):
+        return len(self.entries)
 
-#randomization
-def build_training_text():
-    blocks = (
-            split_blocks(text1) +
-            split_blocks(text2) +
-            split_blocks(text3)
-    )
+    def __getitem__(self, idx):
+        return self.entries[idx]
 
-    random.shuffle(blocks)
+data = load_data('data/data.txt')
+train_data, val_data = split_data(data, 0.2)
 
-    text =  "\n\n".join(blocks)
-    return torch.tensor(encode(text), dtype=torch.long)
+train_set = MythDataset(train_data)
+val_set = MythDataset(val_data)
+
+
+def collate(batch_data):
+    encoded_batch = hf_tokenizer(batch_data, padding = True, truncation= True, max_length= 128, return_tensors= 'pt')
+
+    input_ids = encoded_batch["input_ids"]
+    attention_mask = encoded_batch["attention_mask"]
+
+    #token shifting
+    labels = input_ids.clone()
+    labels[:, :-1] = labels[:, 1:]
+    labels[:, -1] = -100
+
+    #mask padding
+    labels[:, :-1][attention_mask[:, 1:] == 0] = -100
+
+    return {"input_ids": input_ids,
+            "labels": labels,
+            "attention_mask": attention_mask}
+
+
+
+

@@ -7,6 +7,7 @@ class Embedding(nn.Module):
     super().__init__()
     self.token_embeddings = nn.Embedding(token_size, embed_size)
     self.positional_embeddings = nn.Embedding(context_length, embed_size)
+    self.dropout = nn.Dropout(0.2)
 
 
   def forward(self, x):
@@ -17,7 +18,7 @@ class Embedding(nn.Module):
     )
 
     # (batch_size * context_length * embed_size)
-    return token_embed + positional_embed
+    return self.dropout(token_embed + positional_embed)
 
 
 class MultiHeadAttention(nn.Module):
@@ -27,6 +28,8 @@ class MultiHeadAttention(nn.Module):
     self.key = nn.Linear(num_embeddings, num_embeddings, bias = False)
     self.query = nn.Linear(num_embeddings, num_embeddings, bias = False)
     self.values = nn.Linear(num_embeddings, num_embeddings, bias = False)
+    self.dropout = nn.Dropout(0.2)
+    self.projection = nn.Linear(num_embeddings, num_embeddings)
 
   def forward(self, x):
     b, t, c = x.shape
@@ -45,18 +48,20 @@ class MultiHeadAttention(nn.Module):
     #at pos t to learn from tokens as pot > t
     weights = weights.masked_fill(mask == 0, float('-inf'))
 
-    output = F.softmax(weights, dim = -1) @ values
+    output = self.dropout(F.softmax(weights, dim = -1)) @ values
 
-    return output
+    projected = self.projection(output)
+
+    return self.dropout(projected)
 
 class FeedForwardLayer(nn.Module):
   def __init__(self, num_embeddings):
     super().__init__()
     self.num_embeddings = num_embeddings
     self.net = nn.Sequential(
-        nn.Linear(num_embeddings, num_embeddings * 4),
+        nn.Linear(num_embeddings, num_embeddings * 2),
         nn.ReLU(),
-        nn.Linear(num_embeddings * 4, num_embeddings))
+        nn.Linear(num_embeddings * 2, num_embeddings))
 
   def forward(self, x):
     return self.net(x)
@@ -91,22 +96,13 @@ class Transformer(nn.Module):
     self.fn = nn.Linear(embed_size, token_size)
 
 
-  def forward(self, indexes, targets = None):
+  def forward(self, indexes):
     x = self.embeddings(indexes)
     for block in self.transformer_blocks:
       x = block(x)
 
     x = self.fl(x)
-    output = self.fn(x)
-
-    if targets is None:
-        return output
-    else:
-        B, T, C = output.shape
-        loss = F.cross_entropy(
-                output.view(B*T, C),
-                targets.view(B*T)
-            )
-        return output, loss
+    logits = self.fn(x)
+    return logits
 
 

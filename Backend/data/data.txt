@@ -1,0 +1,183 @@
+Greek mythology is the body of myths originally told by the ancient Greeks. These stories explain the origins of the world, the lives of gods and heroes, and the religious practices of ancient Greece.
+
+Passage: The Greek myths were first propagated through an oral-poetic tradition. Over time, myths about the Trojan War and its aftermath became part of epic poetry such as the Iliad and the Odyssey.
+
+Context: Myths of origin attempt to explain the beginnings of the universe. In Hesiod's Theogony, creation begins with Chaos, followed by Gaia, Tartarus, and Eros.
+
+The Odyssey is an ancient Greek epic attributed to Homer. It follows Odysseus, king of Ithaca, on his long journey home after the Trojan War.
+
+Passage: Odysseus's return from Troy takes ten additional years. During his absence, Penelope and Telemachus must deal with aggressive suitors in Ithaca.
+
+Context: Athena helps Telemachus search for news of his father and later supports Odysseus's return. Poseidon opposes Odysseus because Odysseus blinded Polyphemus, Poseidon's son.
+
+Odysseus is held on Calypso's island until Athena petitions Zeus for his release. After Hermes delivers Zeus's message, Calypso lets Odysseus leave, but Poseidon destroys his raft in a storm.
+
+Passage: On his travels, Odysseus and his men encounter the Cicones, the lotus-eaters, and the Cyclops Polyphemus. Odysseus escapes Polyphemus by calling himself 'Nobody' and then blinding the Cyclops.
+
+Context: Aeolus gives Odysseus a bag of winds, but Odysseus's crew opens it and blows the ships off course. Later, Circe turns Odysseus's men into pigs before restoring them to human form.
+
+Odysseus passes the Sirens by having his crew plug their ears with beeswax while he is tied to the mast. He also sails between Scylla and Charybdis, two deadly dangers of the sea.
+
+Passage: After Odysseus's men kill the sacred cattle of Helios, Zeus destroys their last ship. Odysseus survives alone and eventually reaches the Phaeacians, who help him return to Ithaca.
+
+Context: Back in Ithaca, Odysseus disguises himself as a beggar. With Telemachus's help, he defeats the suitors and reunites with Penelope after she tests his identity.
+
+The Trojan War begins after Paris of Troy takes Helen from Menelaus, king of Sparta. In response, Agamemnon leads the Achaeans against Troy.
+
+Passage: The war lasts ten years and includes many famous heroes, including Achilles, Hector, Ajax, Odysseus, and Aeneas. The Iliad focuses on a short period near the end of the conflict, while the Odyssey tells the story of Odysseus's return home.
+
+Context: According to myth, the war is set in motion by the Judgment of Paris. Hera, Athena, and Aphrodite compete for a golden apple marked 'for the fairest,' and Paris awards it to Aphrodite.
+
+Aphrodite promises Paris the love of Helen, the most beautiful woman in the world. Paris later takes Helen to Troy, which leads to the Greek expedition against the city.
+
+Passage: Achilles, son of Peleus and Thetis, is the greatest warrior of the Achaeans. Hector is Troy's greatest defender, and Achilles eventually kills him after the death of Patroclus.
+
+Context: Late in the war, the Greeks use the Trojan Horse, a giant hollow wooden horse, to enter Troy by deception. Once inside the city, the Greeks open the gates and sack Troy.
+
+After the fall of Troy, many Greek leaders suffer on their journeys home because the gods are angered by sacrilege and violence during the sack. Odysseus's ten-year homecoming is the most famous of these return stories.
+
+Passage: Aeneas survives the fall of Troy and, in later tradition, leads Trojan refugees away from the city. Roman tradition later makes him an ancestor of the Romans.
+
+Q: What is Greek mythology?
+A: Greek mythology is the body of myths told by the ancient Greeks, including stories about gods, heroes, origins, and ritual life.
+
+Question: How were Greek myths first transmitted?
+Answer: They were first transmitted through an oral-poetic tradition before being written down in works such as the Iliad, the Odyssey, and Hesiod's poems.
+
+Prompt: What is the Odyssey?
+Response: The Odyssey is an ancient Greek epic attributed to Homer about Odysseus's journey home after the Trojan War.
+
+Q: Who is Odysseus?
+A: Odysseus is the king of Ithaca and the central hero of the Odyssey.
+
+Question: Who is Penelope?
+Answer: Penelope is Odysseus's wife, who remains in Ithaca and resists the suitors during his long absence.
+
+Prompt: Who is Telemachus?
+Response: Telemachus is the son of Odysseus and Penelope.
+
+Q: What role does Athena play in the Odyssey?
+A: Athena repeatedly helps Odysseus and Telemachus, guiding them and supporting Odysseus's return home.
+
+Question: Why does Poseidon oppose Odysseus?
+Answer: Poseidon opposes Odysseus because Odysseus blinded Polyphemus, who is Poseidon's son.
+
+Prompt: Who is Calypso?
+Response: Calypso is the nymph who keeps Odysseus on her island until the gods order his release.
+
+Q: Who is Polyphemus?
+A: Polyphemus is the Cyclops blinded by Odysseus during the journey home from Troy.
+
+Question: How does Odysseus escape Polyphemus?
+Answer: He gets the Cyclops drunk, says his name is 'Nobody,' blinds him, and escapes from the cave.
+
+Prompt: Who is Circe?
+Response: Circe is the sorceress who turns Odysseus's men into pigs before restoring them.
+
+Q: What does Aeolus give Odysseus?
+A: Aeolus gives Odysseus a bag containing the winds.
+
+Question: Why do Odysseus's ships get blown off course after leaving Aeolus?
+Answer: His crew opens the bag of winds, releasing the winds and ruining the voyage.
+
+Prompt: How does Odysseus survive the Sirens?
+Response: His crew plugs their ears with beeswax, and Odysseus listens safely while tied to the mast.
+
+Q: What are Scylla and Charybdis?
+A: Scylla and Charybdis are deadly sea dangers that Odysseus must sail between.
+
+Question: Why does Zeus destroy Odysseus's last ship?
+Answer: Zeus destroys it after Odysseus's men kill the sacred cattle of Helios.
+
+Prompt: How does Odysseus return to Ithaca?
+Response: The Phaeacians bring him home, and he returns in disguise before reclaiming his house.
+
+Q: How does Odysseus defeat the suitors?
+A: With Telemachus's help, he reveals himself and kills the suitors in his hall.
+
+Question: How does Penelope test Odysseus?
+Answer: She tests him with the secret of their immovable bed, which only the real Odysseus would know.
+
+Prompt: What is the Trojan War?
+Response: The Trojan War is the legendary conflict between the Achaeans and Troy that begins after Paris takes Helen from Menelaus.
+
+Q: Who is Helen?
+A: Helen is the wife of Menelaus whose departure with Paris helps trigger the Trojan War.
+
+Question: Who is Paris?
+Answer: Paris is the Trojan prince who awards the golden apple to Aphrodite and later takes Helen to Troy.
+
+Prompt: Who is Menelaus?
+Response: Menelaus is the king of Sparta and Helen's husband.
+
+Q: Who is Agamemnon?
+A: Agamemnon is the king of Mycenae and the leader of the Greek expedition against Troy.
+
+Question: Who is Achilles?
+Answer: Achilles is the greatest warrior of the Achaeans and the son of Peleus and Thetis.
+
+Prompt: Who is Hector?
+Response: Hector is the greatest Trojan defender and a prince of Troy.
+
+Q: Who is Patroclus?
+A: Patroclus is Achilles's close companion whose death drives Achilles back into battle.
+
+Question: Who kills Hector?
+Answer: Achilles kills Hector in revenge for the death of Patroclus.
+
+Prompt: Who are Peleus and Thetis?
+Response: Peleus and Thetis are the parents of Achilles.
+
+Q: What is the Judgment of Paris?
+A: It is the contest in which Paris chooses Aphrodite over Hera and Athena as the fairest goddess.
+
+Question: What does Aphrodite promise Paris?
+Answer: She promises him the love of Helen, the most beautiful woman in the world.
+
+Prompt: Why is Achilles important to the war?
+Response: Prophecy says Troy cannot fall without Achilles, and he becomes the Achaeans' most powerful fighter.
+
+Q: Who is Ajax?
+A: Ajax is one of the greatest Achaean warriors at Troy.
+
+Question: Who is Palamedes?
+Answer: Palamedes is a clever Greek hero later killed through a plot associated with Odysseus.
+
+Prompt: Who is Chryses?
+Response: Chryses is the priest of Apollo whose mistreatment by Agamemnon helps trigger the plague in the Iliad.
+
+Q: Who is Briseis?
+A: Briseis is the captive woman taken from Achilles by Agamemnon, sparking Achilles's anger.
+
+Question: Who is Chryseis?
+Answer: Chryseis is the daughter of Chryses and the captive whose return ends Apollo's plague.
+
+Prompt: Who is Philoctetes?
+Response: Philoctetes is the archer who possesses Heracles's bow and is later needed for Troy's fall.
+
+Q: Who is Neoptolemus?
+A: Neoptolemus is the son of Achilles who later joins the war.
+
+Question: What is the Trojan Horse?
+Answer: The Trojan Horse is the giant wooden horse used by the Greeks to enter Troy by deception.
+
+Prompt: Who is Cassandra?
+Response: Cassandra is the Trojan prophetess whose warnings are not believed.
+
+Q: Who is Laocoön?
+A: Laocoön is the Trojan who warns against bringing the horse into the city.
+
+Question: Who is Priam?
+Answer: Priam is the king of Troy during the Trojan War.
+
+Prompt: Who is Aeneas?
+Response: Aeneas is a Trojan hero who survives the fall of Troy and later becomes central in Roman tradition.
+
+Q: What happens to Troy in the end?
+A: The Greeks enter the city through the Trojan Horse, kill many Trojans, and sack Troy.
+
+Question: Why is the Odyssey important?
+Answer: It is one of the foundational epics of Greek literature and a major story of homecoming, wandering, and identity.
+
+Prompt: What are key themes of the Odyssey?
+Response: Key themes include homecoming, wandering, hospitality, testing, and omens.
