@@ -1,0 +1,7 @@
+# tokenizer artifacts
+sp_corpus.txt
+token.model
+token.vocab
+
+# model checkpoints
+weights.pt
