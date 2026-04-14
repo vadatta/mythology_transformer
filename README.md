@@ -14,7 +14,7 @@ Features
 
 How It Works
 
-1. Greek mythology texts are collected and preprocessed into token sequences using SentencePiece tokenization.
+1. Greek mythology texts are collected and preprocessed into token sequences using HuggingFace tokenization.
 2. The text data is split into training examples of fixed context length.
 3. Training samples are shuffled and grouped into batches.
 4. The transformer model learns to predict the next token in a sequence.
